@@ -4,6 +4,8 @@ require './lib/show'
 
 describe Show do
   knight_rider = Show.new("Knight Rider", "Glen Larson", [michael_knight, kitt])
+  kitt = Character.new({name: "KITT", actor: "William Daniels", salary: 1_000_000})
+  michael_knight = Character.new({name: "Michael Knight", actor: "David Hasselhoff", salary: 1_600_000})
 
   context 'Attributes' do
     it "exists" do
@@ -18,13 +20,14 @@ describe Show do
       expect(knight_rider.creator).to eq("Glen Larson")
     end
 
-  context "Character" do
-    kitt = Character.new({name: "KITT", actor: "William Daniels", salary: 1_000_000})
-    michael_knight = Character.new({name: "Michael Knight", actor: "David Hasselhoff", salary: 1_600_000})
-
     it "has characters" do
       expect(knight_rider.characters).to eq([michael_knight, kitt])
     end
+
+  context "Character" do
+    knight_rider = Show.new("Knight Rider", "Glen Larson", [michael_knight, kitt])
+    kitt = Character.new({name: "KITT", actor: "William Daniels", salary: 1_000_000})
+    michael_knight = Character.new({name: "Michael Knight", actor: "David Hasselhoff", salary: 1_600_000})
 
     it "has a total salary" do
       expect(knight_rider.total_salary).to eq(2600000)
