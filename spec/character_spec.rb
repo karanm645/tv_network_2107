@@ -1,3 +1,4 @@
+require 'rspec'
 require './lib/character'
 
 describe Character do
